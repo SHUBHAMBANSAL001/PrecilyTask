@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: precily
+  namespace: default
+spec: 
+  replicas: 3
+  selector:
+    matchLabels:
+      app: precily-app
+  template:
+    metadata:
+      name: precily-pod
+      labels:
+        app: precily-app
+    spec:
+      containers: 
+      - name: precily-container
+        image: precily
+        ports: 
+        - containerPort: 4000
